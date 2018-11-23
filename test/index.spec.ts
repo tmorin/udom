@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {addDelegatedEventListener} from '../src';
+import {addDelegatedEventListener, formToObject} from '../src';
 
 describe('formToObject', () => {
     let sandbox;
@@ -10,6 +10,10 @@ describe('formToObject', () => {
 
     it('should expose addDelegatedEventListener', () => {
         expect(addDelegatedEventListener).to.be.exist;
+    });
+
+    it('should expose formToObject', () => {
+        expect(formToObject).to.be.exist;
     });
 
 });
