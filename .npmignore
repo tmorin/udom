@@ -1,0 +1,12 @@
+.idea
+.tmp
+src
+.gitignore
+.gitlab-ci.yml
+.npmignore
+test
+karma.conf.js
+tsconfig.json
+webpack.common.js
+webpack.dev.js
+webpack.prd.js

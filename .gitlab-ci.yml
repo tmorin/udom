@@ -1,0 +1,44 @@
+image: node:10
+
+stages:
+  - test
+  - build
+  - deploy
+
+before_script:
+  - npm install
+
+cache:
+  key: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+  paths:
+    - node_modules/
+
+test_src:
+  stage: test
+  script:
+    - npm install
+    - npm test
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    reports:
+      junit: .tmp/junit/*.xml
+
+build_artifacts:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    paths:
+      - dist
+      - lib
+
+deploy_npm:
+  stage: deploy
+  script:
+    - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
+    - npm install
+    - npm publish --dry-run
+  only:
+    - tags
