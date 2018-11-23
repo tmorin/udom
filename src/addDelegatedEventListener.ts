@@ -39,6 +39,6 @@ export function addDelegatedEventListener<K extends keyof HTMLElementEventMap>(
     const typesAsArray = types.split(',').map(t => t.trim());
     typesAsArray.forEach(type => root.addEventListener(type, wrapper, options));
     return () => {
-        typesAsArray.forEach(() => root.removeEventListener(types, wrapper, options));
+        typesAsArray.forEach(type => root.removeEventListener(type, wrapper, options));
     }
 }

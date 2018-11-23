@@ -41,4 +41,22 @@ describe('addDelegatedEventListener', () => {
             bubbles: true
         }));
     });
+    it('should remove delegate event listeners', (done) => {
+        const container = document.createElement('div');
+        const ul = container.appendChild(document.createElement('ul'));
+        ul.appendChild(document.createElement('li'));
+        const li1 = ul.appendChild(document.createElement('li'));
+        ul.appendChild(document.createElement('li'));
+        const remove = addDelegatedEventListener(
+            container,
+            'ul',
+            'custom-event-li1,custom-event-li2',
+            () => done('should not be called')
+        );
+        remove();
+        li1.dispatchEvent(new CustomEvent('custom-event-li1', {
+            bubbles: true
+        }));
+        setTimeout(() => done(), 100);
+    });
 });
