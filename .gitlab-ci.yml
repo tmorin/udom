@@ -39,6 +39,6 @@ deploy_npm:
   script:
     - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'>.npmrc
     - npm install
-    - npm publish --dry-run
+    - npm publish
   only:
     - tags
