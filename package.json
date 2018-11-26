@@ -1,6 +1,6 @@
 {
-  "name": "udom",
-  "version": "0.1.0",
+  "name": "@tmorin/udom",
+  "version": "0.2.0-beta.0",
   "description": "Set of utilities around the DOM.",
   "keywords": [
     "dom",
@@ -20,6 +20,9 @@
     "url": "https://gitlab.com/tmorin/udom/issues"
   },
   "homepage": "https://gitlab.com/tmorin/udom#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
