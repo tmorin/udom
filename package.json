@@ -1,6 +1,6 @@
 {
   "name": "@tmorin/udom",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Set of utilities around the DOM.",
   "keywords": [
     "dom",
