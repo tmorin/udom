@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {formToObject} from '../src';
+import {formToObject} from '../src/index';
 
 describe('formToObject', () => {
 

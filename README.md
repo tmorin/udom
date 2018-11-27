@@ -19,8 +19,44 @@ Directly in the browser
 
 `udom` is a library exposing its service though out simple JavaScript function:
 
+- `addEventListener`
 - `addDelegatedEventListener`
 - `formToObject`
+
+### addEventListener
+
+Attach a handler to one or more events to the element.
+
+```javascript
+addEventListener(element, types, listener, options);
+```
+
+Where:
+- `element` is the element where the event listeners will be added
+- `types` is a list of event types separated by comas
+- `listener` is the event listener
+- `options` are the [regular event listener options](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters)
+
+#### Example
+
+```javascript
+const removeEventListener = addEventListener(
+    document.body,
+    'submit,input,change',
+    (evt) => {
+        // now do something fun!
+    }
+);
+
+// when needed remove the listener:
+removeEventListener()
+```
+
+Where:
+
+- `evt` is the original event coming from the underlying form's element
+- `evt.target` is the element which dispatched the event, in this example could be an input, select, textarea ...
+- `removeListener` is a function which will remove the event listener when called
 
 ### addDelegatedEventListener
 
