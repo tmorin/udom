@@ -11,9 +11,9 @@ export interface RemoveEventListener {
  * @param options the options
  */
 export function addEventListener<K extends keyof HTMLElementEventMap>(
-    element: HTMLElement,
+    element: EventTarget,
     types: K | string,
-    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    listener: (this: EventTarget, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | AddEventListenerOptions
 ): RemoveEventListener {
     const typesAsArray = types.split(',').map(t => t.trim());
