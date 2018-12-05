@@ -1,3 +1,3 @@
-export * from './addEventListener';
-export * from './addDelegatedEventListener';
-export * from './formToObject';
+export {addEventListener} from './addEventListener';
+export {addDelegatedEventListener, DelegatedEventListener} from './addDelegatedEventListener';
+export {formToObject} from './formToObject';

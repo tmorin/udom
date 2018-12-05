@@ -1,7 +1,3 @@
-export interface RemoveEventListener {
-    (): void
-}
-
 /**
  * Attach a handler to one or more events to the element.
  *
@@ -15,7 +11,7 @@ export function addEventListener<K extends keyof HTMLElementEventMap>(
     types: K | string,
     listener: (this: EventTarget, ev: HTMLElementEventMap[K]) => any,
     options?: boolean | AddEventListenerOptions
-): RemoveEventListener {
+): () => void {
     const typesAsArray = types.split(',').map(t => t.trim());
     typesAsArray.forEach(type => element.addEventListener(type, listener, options));
     return () => {

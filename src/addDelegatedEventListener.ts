@@ -1,7 +1,3 @@
-export interface RemoveDelegatedEventListener {
-    (): void
-}
-
 export interface DelegatedEventListener<K extends keyof HTMLElementEventMap> {
     /**
      * @param event the event
@@ -26,7 +22,7 @@ export function addDelegatedEventListener<K extends keyof HTMLElementEventMap>(
     types: K | string,
     listener: DelegatedEventListener<K>,
     options?: boolean | AddEventListenerOptions
-): RemoveDelegatedEventListener {
+): () => void {
     const wrapper = (evt: Event) => {
         const selectedTargets = Array.prototype.slice.apply(root.querySelectorAll(selector)) as Element[];
         for (let selectedTarget of selectedTargets) {
