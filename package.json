@@ -25,6 +25,12 @@
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "unpkg": "dist/udom.min.js",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
   "scripts": {
     "test": "karma start --single-run --no-auto-watch --no-colors --browsers sl_firefox,sl_chrome",
     "test:watch": "karma start --no-single-run --auto-watch --browsers Firefox",
