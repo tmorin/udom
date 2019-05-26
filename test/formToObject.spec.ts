@@ -72,13 +72,13 @@ describe('formToObject', () => {
         input.type = 'date';
         input.value = '2018-01-01';
         const result = formToObject(form.elements);
-        expect(result).to.have.nested.property('date', '2018-01-01');
+        expect(result.date.toISOString()).to.eq(new Date('2018-01-01').toISOString());
     });
 
     it('should extract time', () => {
-        form.innerHTML = `<input name="time" type="time" value="10:10" />`;
+        form.innerHTML = `<input name="time" type="time" value="20:10" />`;
         const result = formToObject(form.elements);
-        expect(result).to.have.nested.property('time', '10:10');
+        expect(result).to.have.nested.property('time', 72600000);
     });
 
     it('should extract textarea', () => {

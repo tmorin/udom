@@ -73,6 +73,12 @@ export function formToObject(
             if (input.type === 'number' || input.type === 'range') {
                 value = input.valueAsNumber;
             }
+            if (input.type === 'date') {
+                value = input.valueAsDate;
+            }
+            if (input.type === 'time') {
+                value = input.valueAsNumber;
+            }
             if (path && !disabled) {
                 fields.push({disabled, path, value});
             }

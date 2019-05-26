@@ -16,7 +16,7 @@ Directly in the browser
 
 ## Usage
 
-`udom` is a library exposing services though out simple JavaScript function:
+`udom` is a library exposing simple JavaScript functions:
 
 - `addEventListener`
 - `addDelegatedEventListener`
@@ -127,8 +127,11 @@ The list of handled HTML elements is:
 - [HTMLButtonElement]
 
 About [HTMLInputElement], by default the value is equal to the property `value`.
-When the type is `range` or `number` the value is equal to the property `valueAsNumber`.
-When the type is `checkbox` the value is equal to the property `checked`.
+
+- When the type is `range` or `number` the value is equal to the property `valueAsNumber`.
+- When the type is `checkbox` the value is equal to the property `checked`.
+- When the type is `date` the value is equal to the property `valueAsDate`.
+- When the type is `time` the value is equal to the property `valueAsNumer`.
 
 About [HTMLSelectElement], when the property/attribute `multiple` is `true`, the field will be an array of string.
 When the property/attribute `multiple` is `false`, the field will be a string.
