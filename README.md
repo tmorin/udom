@@ -12,12 +12,11 @@ npm install udom
 Directly in the browser
 ```html
 <script src="https://unpkg.com/udom/dist/udom.min.js"></script>
-
 ```
 
 ## Usage
 
-`udom` is a library exposing its service though out simple JavaScript function:
+`udom` is a library exposing services though out simple JavaScript function:
 
 - `addEventListener`
 - `addDelegatedEventListener`
@@ -120,7 +119,7 @@ The paths are based on the following syntax:
 - the first item of the array *array1*: `array1[0]`
 - the field *field1* of the second item of the array *array2*: `array2[1].field1`
 
-The list iof handle HTML elements:
+The list of handled HTML elements is:
 
 - [HTMLInputElement]
 - [HTMLSelectElement]
