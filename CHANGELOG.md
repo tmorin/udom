@@ -1,6 +1,20 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.4.0](https://gitlab.com/tmorin/udom/compare/v0.3.2...v0.4.0) (2019-05-27)
+
+
+### Bug Fixes
+
+* unpkg was not able to resolve the UMD file ([a2911db](https://gitlab.com/tmorin/udom/commit/a2911db))
+
+
+### Features
+
+* **formToObject:** should handle date and time ([1f49b8d](https://gitlab.com/tmorin/udom/commit/1f49b8d))
+
+
 
 <a name="0.3.2"></a>
 ## [0.3.2](https://gitlab.com/tmorin/udom/compare/v0.3.1...v0.3.2) (2018-12-05)
