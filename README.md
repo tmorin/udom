@@ -11,7 +11,7 @@ npm install udom
 
 Directly in the browser
 ```html
-<script src="https://unpkg.com/udom/dist/udom.min.js"></script>
+<script src="https://unpkg.com/@tmorin/udom/dist/udom.min.js"></script>
 ```
 
 ## Usage
