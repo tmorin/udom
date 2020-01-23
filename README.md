@@ -6,7 +6,7 @@
 
 From npm or yarn or ... from npm what? 
 ```bash
-npm install udom
+npm install @tmorin/udom
 ```
 
 Directly in the browser
@@ -16,17 +16,19 @@ Directly in the browser
 
 ## Usage
 
-`udom` is a library exposing simple JavaScript functions:
+`udom` is a library exposing simple services:
 
 - `addEventListener`
 - `addDelegatedEventListener`
 - `formToObject`
+-  messages with `UiMessagesListener` and `UiMessageDispatcher`
 
 ### addEventListener
 
 Attach a handler to one or more events to the element.
 
 ```javascript
+import {addEventListener} from '@tmorin/udom';
 addEventListener(element, types, listener, options);
 ```
 
@@ -39,6 +41,7 @@ Where:
 #### Example
 
 ```javascript
+import {addEventListener} from '@tmorin/udom';
 const removeEventListener = addEventListener(
     document.body,
     'submit,input,change',
@@ -64,6 +67,7 @@ now or in the future, based on a specific root elements.
 It's similar to the [jQuery delegate function](https://api.jquery.com/delegate/).
 
 ```javascript
+import {addDelegatedEventListener} from '@tmorin/udom';
 addDelegatedEventListener(root, selector, types, listener, options);
 ```
 
@@ -77,6 +81,7 @@ Where:
 #### Example
 
 ```javascript
+import {addDelegatedEventListener} from '@tmorin/udom';
 const removeDelegatedEventListener = addDelegatedEventListener(
     document.body,
     'form',
@@ -102,6 +107,7 @@ Where:
 Convert an [HTMLFormElement] or an [HTMLFormControlsCollection] or an [HTMLCollection] to a simple JavaScript object.
 
 ```javascript
+import {formToObject} from '@tmorin/udom';
 const formAsObject = formToObject(formOrElements, providedFormAsObject);
 // formAsObject === providedFormAsObject
 ```
@@ -139,7 +145,7 @@ The values are took from the selected option(s), i.e. the property `selectedOpti
 
 About [HTMLTextAreaElement] and [HTMLButtonElement], the value is equal to the property `value`.
 
-### Example
+#### Example
 
 The HTML form:
 ```html
@@ -157,6 +163,7 @@ The HTML form:
 
 The conversion:
 ```javascript
+import {formToObject} from '@tmorin/udom';
 const formAsObject = formToObject(document.getElementById('aForm'));
 console.log(JSON.stringify(formAsObject, null, 4));
 ```
@@ -180,3 +187,23 @@ The console output:
 [HTMLSelectElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement
 [HTMLTextAreaElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement
 [HTMLButtonElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement
+
+### UI Messages
+
+Register an handler.
+```javascript
+import {UiMessagesListener} from '@tmorin/udom';
+UiMessagesListener.from(document.getElementById('aTarget'))
+    .register('myApp/events/an-event', (message, event) => {
+        console.log('message', message.urn, message.payload);
+    })
+    .start();
+```
+
+Dispatch a message.
+```javascript
+import {UiMessageDispatcher} from '@tmorin/udom';
+UiMessageDispatcher.dispatch('myApp/events/an-event')
+    .payload('a payload')
+    .from(document.getElementById('anotherTarget'));
+```

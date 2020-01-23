@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {addDelegatedEventListener, addEventListener, formToObject} from '../src/index';
+import {addDelegatedEventListener, addEventListener, formToObject,UiMessagesListener,UiMessageDispatcher} from '../src';
 
-describe('formToObject', () => {
+describe('index', () => {
     let sandbox;
 
     beforeEach(function () {
@@ -18,6 +18,14 @@ describe('formToObject', () => {
 
     it('should expose formToObject', () => {
         expect(formToObject).to.be.exist;
+    });
+
+    it('should expose UiMessagesListener', () => {
+        expect(UiMessagesListener).to.be.exist;
+    });
+
+    it('should expose UiMessageDispatcher', () => {
+        expect(UiMessageDispatcher).to.be.exist;
     });
 
 });

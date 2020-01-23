@@ -1,8 +1,7 @@
 import {expect} from 'chai';
-import {formToObject} from '../src/index';
+import {formToObject} from '../src';
 
 describe('formToObject', () => {
-
     let form: HTMLFormElement;
 
     beforeEach(() => {

@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {addDelegatedEventListener} from '../src/index';
+import {addDelegatedEventListener} from '../src';
 
 describe('addDelegatedEventListener', () => {
     it('should delegate event listeners', (done) => {
