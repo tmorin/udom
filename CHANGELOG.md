@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://gitlab.com/tmorin/udom/compare/v0.5.0...v0.6.0) (2020-01-23)
+
+
+### Features
+
+* expose the UiMessageHandlers ([a98715c](https://gitlab.com/tmorin/udom/commit/a98715c))
+
+
+
 ## [0.5.0](https://gitlab.com/tmorin/udom/compare/v0.4.0...v0.5.0) (2020-01-23)
 
 
