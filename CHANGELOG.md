@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://gitlab.com/tmorin/udom/compare/v0.4.0...v0.5.0) (2020-01-23)
+
+
+### Features
+
+* add ui messages ([7dae9ad](https://gitlab.com/tmorin/udom/commit/7dae9ad))
+* handle ui messages ([18ef32b](https://gitlab.com/tmorin/udom/commit/18ef32b))
+
+
+
 ## [0.4.0](https://gitlab.com/tmorin/udom/compare/v0.3.2...v0.4.0) (2019-05-27)
 
 
