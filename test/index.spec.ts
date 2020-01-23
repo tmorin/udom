@@ -1,5 +1,12 @@
 import {expect} from 'chai';
-import {addDelegatedEventListener, addEventListener, formToObject,UiMessagesListener,UiMessageDispatcher} from '../src';
+import {
+    addDelegatedEventListener,
+    addEventListener,
+    formToObject,
+    UiMessageDispatcher,
+    UiMessageHandlers,
+    UiMessagesListener
+} from '../src';
 
 describe('index', () => {
     let sandbox;
@@ -26,6 +33,10 @@ describe('index', () => {
 
     it('should expose UiMessageDispatcher', () => {
         expect(UiMessageDispatcher).to.be.exist;
+    });
+
+    it('should expose UiMessageHandlers', () => {
+        expect(UiMessageHandlers).to.be.exist;
     });
 
 });

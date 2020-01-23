@@ -126,18 +126,70 @@ export class UiMessageDispatcher {
 }
 
 /**
+ * Handlers of UIMessage.
+ */
+export class UiMessageHandlers {
+    constructor(
+        private readonly handlers: MessageHandlers = {}
+    ) {
+    }
+
+    /**
+     * Creates and returns a new UiMessageHandlers.
+     * @param handlers a set of initial handlers
+     */
+    static create(handlers: MessageHandlers = {}) {
+        return new UiMessageHandlers(handlers);
+    }
+
+    /**
+     * Register an handler.
+     * @param urn the urn
+     * @param handler the handler
+     */
+    register(urn: string, handler: MessageHandler<any>): UiMessageHandlers {
+        this.handlers[urn] = handler;
+        return this;
+    }
+
+    /**
+     * Handle a UiMessage delegating to registered handlers.
+     * @param uiMessage the UiMessage
+     */
+    handle(uiMessage: UiMessage<any>) {
+        const urn = uiMessage.detail.urn;
+        const handler = this.handlers[urn];
+        if (handler) {
+            if (uiMessage.cancelable && uiMessage.defaultPrevented) {
+                // cancelable messages which are already processed should be skipped
+                return;
+            }
+            try {
+                handler(uiMessage.detail, uiMessage);
+            } catch (e) {
+                console.error(`the handler [${urn}] failed`, e);
+            } finally {
+                if (uiMessage.cancelable) {
+                    uiMessage.preventDefault();
+                }
+            }
+        }
+    }
+}
+
+/**
  * Utility class to listen to UiMessage events and invokes registered handlers.
  */
 export class UiMessagesListener {
     constructor(
         private readonly target: EventTarget,
-        private readonly handlers: MessageHandlers = {},
+        private readonly handlers: UiMessageHandlers = UiMessageHandlers.create(),
         private _listener: EventListenerOrEventListenerObject = undefined
     ) {
     }
 
     /**
-     * true
+     * true when the listener is started otherwise false.
      */
     get isStarted(): boolean {
         return !!this._listener;
@@ -156,7 +208,7 @@ export class UiMessagesListener {
      */
     start(): UiMessagesListener {
         if (!this.isStarted) {
-            this._listener = (uiMessage: UiMessage<any>) => this.listener(uiMessage);
+            this._listener = (uiMessage: UiMessage<any>) => this.handlers.handle(uiMessage);
             this.target.addEventListener(UiMessage.EVENT_TYPE, this._listener);
         }
         return this;
@@ -179,27 +231,7 @@ export class UiMessagesListener {
      * @param handler the handler
      */
     register(urn: string, handler: MessageHandler<any>): UiMessagesListener {
-        this.handlers[urn] = handler;
+        this.handlers.register(urn, handler);
         return this;
-    }
-
-    private listener(uiMessage: UiMessage<any>): void {
-        const urn = uiMessage.detail.urn;
-        const handler = this.handlers[urn];
-        if (handler) {
-            if (uiMessage.cancelable && uiMessage.defaultPrevented) {
-                // cancelable messages which are already processed should be skipped
-                return;
-            }
-            try {
-                handler(uiMessage.detail, uiMessage);
-            } catch (e) {
-                console.error(`the handler [${urn}] failed`, e);
-            } finally {
-                if (uiMessage.cancelable) {
-                    uiMessage.preventDefault();
-                }
-            }
-        }
     }
 }
