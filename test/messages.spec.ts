@@ -21,7 +21,7 @@ describe('messages', () => {
     it('should handle message', function (done) {
         const urn = 'action/message';
         const payload = 'a payload';
-        const handler: MessageHandler<string> = (message, event) => {
+        const handler: MessageHandler<string> = (message) => {
             expect(message).to.have.property('urn', urn);
             expect(message).to.have.property('payload', payload);
             done()

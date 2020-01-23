@@ -56,7 +56,7 @@ export interface MessageHandlers {
  * - The message will propagate across the shadow DOM boundary into the standard DOM.
  * - The message can be handled several times.
  */
-export class UiMessageDispatcher {
+export class UiMessageDispatcher<T> {
     constructor(
         private _urn: string,
         private _payload: any = undefined,
@@ -70,14 +70,14 @@ export class UiMessageDispatcher {
      * Build and return a dispatcher.
      * @param urn the urn of the message
      */
-    static dispatch(urn: string): UiMessageDispatcher {
-        return new UiMessageDispatcher(urn);
+    static dispatch<T>(urn: string): UiMessageDispatcher<T> {
+        return new UiMessageDispatcher<T>(urn);
     }
 
     /**
      * @param payload the payload of the message
      */
-    payload(payload: any) {
+    payload(payload: T) {
         this._payload = payload;
         return this;
     }
@@ -147,7 +147,7 @@ export class UiMessageHandlers {
      * @param urn the urn
      * @param handler the handler
      */
-    register(urn: string, handler: MessageHandler<any>): UiMessageHandlers {
+    register<T>(urn: string, handler: MessageHandler<T>): UiMessageHandlers {
         this.handlers[urn] = handler;
         return this;
     }
@@ -156,7 +156,7 @@ export class UiMessageHandlers {
      * Handle a UiMessage delegating to registered handlers.
      * @param uiMessage the UiMessage
      */
-    handle(uiMessage: UiMessage<any>) {
+    handle<T>(uiMessage: UiMessage<T>) {
         const urn = uiMessage.detail.urn;
         const handler = this.handlers[urn];
         if (handler) {
@@ -230,7 +230,7 @@ export class UiMessagesListener {
      * @param urn the urn
      * @param handler the handler
      */
-    register(urn: string, handler: MessageHandler<any>): UiMessagesListener {
+    register<T>(urn: string, handler: MessageHandler<T>): UiMessagesListener {
         this.handlers.register(urn, handler);
         return this;
     }
