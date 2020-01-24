@@ -1,11 +1,12 @@
-name: delivery
+name: Delivery
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 jobs:
   build:
+    name: Build and Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,17 +14,18 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: prepare
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y xvfb firefox chromium-browser
-      - name: install
+          scope: '@tmorin'
+      - name: udpate apt
+        run: sudo apt-get update
+      - name: install apt dependencies
+        run: sudo apt-get install -y xvfb firefox chromium-browser
+      - name: install dependencies
         run: npm ci
-      - name: test
+      - name: test package
         run: npm test
-      - name: build
+      - name: build package
         run: npm run build
-      - name: publish
-        run: npm publish
+      - name: publish package
+        run: npm publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

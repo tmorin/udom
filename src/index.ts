@@ -1,4 +1,3 @@
-export * from './addEventListener';
-export * from './addDelegatedEventListener';
-export * from './formToObject';
-export * from './messages';
+export * from './event';
+export * from './form';
+export * from './message';

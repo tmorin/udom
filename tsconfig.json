@@ -3,8 +3,6 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "target": "es6",
-    "declaration": true,
-    "outDir": "lib",
     "lib": [
       "es6",
       "dom"

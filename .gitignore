@@ -1,5 +1,7 @@
 .idea
 .tmp
-node_modules
-lib
 dist
+node_modules
+**/*.d.ts
+**/*.js
+*.tgz

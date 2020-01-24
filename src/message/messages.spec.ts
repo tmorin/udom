@@ -1,4 +1,5 @@
-import {addEventListener, MessageHandler, UiMessage, UiMessageDispatcher, UiMessagesListener} from '../src';
+import {MessageHandler, UiMessage, UiMessageDispatcher, UiMessagesListener} from './index';
+import {addEventListener} from '../event';
 import {expect} from 'chai';
 import {spy} from 'sinon';
 

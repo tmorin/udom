@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import {addDelegatedEventListener} from '../src';
+import {addEventListener} from './index';
 
-describe('addDelegatedEventListener', () => {
+describe('addEventListener', () => {
     it('should delegate event listeners', (done) => {
         const container = document.createElement('div');
         const ul = container.appendChild(document.createElement('ul'));
@@ -10,24 +10,21 @@ describe('addDelegatedEventListener', () => {
         const li2 = ul.appendChild(document.createElement('li'));
         ul.appendChild(document.createElement('li'));
         let eventListened = 0;
-        addDelegatedEventListener(
-            container,
-            'ul',
+        addEventListener(
+            ul,
             'custom-event-li1,custom-event-li2',
-            function (evt, selectedTarget) {
+            function (evt) {
                 if (evt.type === 'custom-event-li1') {
                     eventListened++;
                     expect(this).to.be.eq(ul);
-                    expect(selectedTarget).to.be.eq(ul);
                     expect(evt.target).to.be.eq(li1);
-                    expect(evt.currentTarget).to.be.eq(container);
+                    expect(evt.currentTarget).to.be.eq(ul);
                 }
                 if (evt.type === 'custom-event-li2') {
                     eventListened++;
                     expect(this).to.be.eq(ul);
-                    expect(selectedTarget).to.be.eq(ul);
                     expect(evt.target).to.be.eq(li2);
-                    expect(evt.currentTarget).to.be.eq(container);
+                    expect(evt.currentTarget).to.be.eq(ul);
                 }
                 if (eventListened === 2) {
                     done();
@@ -47,9 +44,8 @@ describe('addDelegatedEventListener', () => {
         ul.appendChild(document.createElement('li'));
         const li1 = ul.appendChild(document.createElement('li'));
         ul.appendChild(document.createElement('li'));
-        const remove = addDelegatedEventListener(
+        const remove = addEventListener(
             container,
-            'ul',
             'custom-event-li1,custom-event-li2',
             () => done('should not be called')
         );

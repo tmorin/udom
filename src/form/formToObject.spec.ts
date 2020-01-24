@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {formToObject} from '../src';
+import {formToObject} from './index';
 
 describe('formToObject', () => {
     let form: HTMLFormElement;

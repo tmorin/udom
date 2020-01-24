@@ -1,6 +1,6 @@
 {
   "name": "@tmorin/udom",
-  "version": "0.6.1",
+  "version": "0.6.2-alpha.0",
   "description": "Set of utilities around the DOM.",
   "keywords": [
     "dom",
@@ -28,21 +28,18 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "unpkg": "dist/udom.min.js",
-  "files": [
-    "dist",
-    "lib",
-    "src"
-  ],
   "scripts": {
     "test": "karma start --single-run --no-auto-watch --browsers FirefoxHeadless,ChromeHeadlessNoSandbox",
     "test:watch": "karma start --no-single-run --auto-watch --browsers Firefox",
     "build:clean": "rimraf .tmp dist lib *.tgz",
-    "build:lib": "tsc",
+    "build:lib": "tsc --project tsconfig.build.json",
     "build:umd": "webpack --config webpack.dev.js",
     "build:umd:min": "webpack --config webpack.prd.js",
     "build": "npm run build:clean && npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "release": "standard-version -a",
-    "push:release": "git push --follow-tags"
+    "release": "npm run build && standard-version",
+    "release:publish": "git push --follow-tags",
+    "alpha": "npm run build && standard-version --skip.changelog --skip.tag --prerelease alpha",
+    "alpha:publish": "git push --all && npm publish --tag canary"
   },
   "devDependencies": {
     "@types/chai": "^4.2.12",

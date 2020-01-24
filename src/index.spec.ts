@@ -6,7 +6,7 @@ import {
     UiMessageDispatcher,
     UiMessageHandlers,
     UiMessagesListener
-} from '../src';
+} from './index';
 
 describe('index', () => {
     let sandbox;
