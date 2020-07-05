@@ -1,0 +1,23 @@
+name: integration
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: prepare
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb firefox chromium-browser
+      - name: install
+        run: npm ci
+      - name: test
+        run: npm test
+      - name: build
+        run: npm run build

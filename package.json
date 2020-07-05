@@ -5,11 +5,13 @@
   "keywords": [
     "dom",
     "utility",
-    "browser"
+    "browser",
+    "javascript",
+    "typescript"
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/tmorin/udom.git"
+    "url": "git+ssh://git@github.com/tmorin/udom.git"
   },
   "license": "MIT",
   "author": {
@@ -17,9 +19,9 @@
     "url": "https://tmorin.github.io"
   },
   "bugs": {
-    "url": "https://gitlab.com/tmorin/udom/issues"
+    "url": "https://github.com/tmorin/udom/issues"
   },
-  "homepage": "https://gitlab.com/tmorin/udom#readme",
+  "homepage": "https://github.com/tmorin/udom#readme",
   "publishConfig": {
     "access": "public"
   },
@@ -32,7 +34,7 @@
     "src"
   ],
   "scripts": {
-    "test": "karma start --single-run --no-auto-watch --no-colors --browsers sl_firefox,sl_chrome",
+    "test": "karma start --single-run --no-auto-watch --browsers FirefoxHeadless,ChromeHeadlessNoSandbox",
     "test:watch": "karma start --no-single-run --auto-watch --browsers Firefox",
     "build:clean": "rimraf .tmp dist lib *.tgz",
     "build:lib": "tsc",
@@ -43,26 +45,27 @@
     "push:release": "git push --follow-tags"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^12.0.2",
-    "@types/sinon": "^7.5.1",
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^12.12.55",
+    "@types/sinon": "^9.0.5",
     "chai": "^4.2.0",
-    "karma": "^4.1.0",
+    "karma": "^5.2.1",
+    "karma-chrome-launcher": "^3.1.0",
     "karma-cli": "^2.0.0",
-    "karma-firefox-launcher": "^1.1.0",
-    "karma-junit-reporter": "^1.2.0",
-    "karma-mocha": "^1.3.0",
-    "karma-sauce-launcher": "^2.0.2",
-    "karma-webpack": "^3.0.5",
-    "mocha": "^6.1.4",
-    "sinon": "^8.1.1",
-    "standard-version": "^6.0.1",
-    "ts-loader": "^6.0.1",
-    "ts-node": "^8.2.0",
-    "typescript": "^3.4.5",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-merge": "^4.2.1"
+    "karma-firefox-launcher": "^1.3.0",
+    "karma-junit-reporter": "^2.0.1",
+    "karma-mocha": "^2.0.1",
+    "karma-webpack": "^4.0.2",
+    "mocha": "^8.1.3",
+    "puppeteer": "^5.2.1",
+    "sinon": "^9.0.3",
+    "standard-version": "^9.0.0",
+    "ts-loader": "^8.0.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.1.3"
   }
 }
