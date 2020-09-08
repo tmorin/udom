@@ -1,5 +1,7 @@
 # udom
 
+[![Integration](https://github.com/tmorin/udom/workflows/Integration/badge.svg?branch=master)](https://github.com/tmorin/udom/actions?query=workflow%3AIntegration+branch%3Amaster)
+
 > Set of utilities around the DOM.
 
 ## Installation
