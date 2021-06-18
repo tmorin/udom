@@ -4,7 +4,11 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index.ts'),
     module: {
         rules: [
-            {test: /\.(ts|js)$/, exclude: /node_modules/, loader: 'ts-loader'}
+            {
+                test: /\.(ts|js)$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader'
+            }
         ]
     },
     resolve: {

@@ -2,6 +2,9 @@ import {MessageHandler, UiMessage, UiMessageDispatcher, UiMessagesListener} from
 import {addEventListener} from '../event';
 import {expect} from 'chai';
 import {spy} from 'sinon';
+import process from 'process';
+
+global.process = process;
 
 describe('messages', () => {
     let sandbox: HTMLDivElement;

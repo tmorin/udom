@@ -6,12 +6,13 @@ if (!process.env.CHROME_BIN) {
 
 module.exports = (config) => {
     config.set({
-        frameworks: ['mocha'],
+        frameworks: ['mocha', 'webpack'],
 
         reporters: ['progress', 'junit'],
 
         files: [
             {pattern: 'src/**/*.spec.ts', watched: false},
+            {pattern: 'src/**/*', watched: true, included: false, served: false}
         ],
 
         preprocessors: {

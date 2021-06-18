@@ -7,6 +7,9 @@ import {
     UiMessageHandlers,
     UiMessagesListener
 } from './index';
+import process from 'process';
+
+global.process = process;
 
 describe('index', () => {
     let sandbox;

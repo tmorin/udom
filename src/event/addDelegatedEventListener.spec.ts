@@ -1,5 +1,8 @@
 import {expect} from 'chai';
 import {addDelegatedEventListener} from './index';
+import process from 'process';
+
+global.process = process;
 
 describe('addDelegatedEventListener', () => {
     it('should delegate event listeners', (done) => {

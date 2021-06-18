@@ -1,5 +1,8 @@
 import {expect} from 'chai';
 import {formToObject} from './index';
+import process from 'process';
+
+global.process = process;
 
 describe('formToObject', () => {
     let form: HTMLFormElement;
